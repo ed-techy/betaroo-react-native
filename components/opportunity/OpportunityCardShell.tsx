@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import {
   ChevronRightIcon,
@@ -25,9 +25,9 @@ function MetaDot() {
 
 function IconButton({ children }: { children: ReactNode }) {
   return (
-    <Pressable style={styles.headerIconButton} hitSlop={6}>
+    <TouchableOpacity style={styles.headerIconButton} hitSlop={6}>
       {children}
-    </Pressable>
+    </TouchableOpacity>
   );
 }
 
@@ -76,9 +76,9 @@ export function OpportunityCardShell({
               <OddsBookIcon />
               <Text style={styles.oddsText}>{odds}</Text>
             </View>
-            <Pressable style={styles.plusButton} hitSlop={6}>
+            <TouchableOpacity style={styles.plusButton} hitSlop={6}>
               <PlusIcon />
-            </Pressable>
+            </TouchableOpacity>
           </View>
         </View>
       </View>

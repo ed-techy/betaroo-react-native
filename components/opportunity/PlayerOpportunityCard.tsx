@@ -6,12 +6,12 @@ import {
   View,
 } from "react-native";
 
+import { PlayerTeamLogo } from "@/components/logos";
 import { ConfidenceBadge } from "@/components/opportunity/ConfidenceBadge";
 import {
   OpportunityCardShell,
   opportunityCardShellStyles,
 } from "@/components/opportunity/OpportunityCardShell";
-import { PlayerTeamLogo } from "@/components/opportunity/logos/PlayerTeamLogo";
 import { colors, radius, spacing, typography } from "@/tokens";
 
 type PlayerOpportunityCardProps = {

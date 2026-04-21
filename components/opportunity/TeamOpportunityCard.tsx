@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View } from "react-native";
 
+import { teamLogoByCode } from "@/components/logos";
 import { ConfidenceBadge } from "@/components/opportunity/ConfidenceBadge";
 import {
   OpportunityCardShell,
   opportunityCardShellStyles,
 } from "@/components/opportunity/OpportunityCardShell";
-import { teamLogoByCode } from "@/components/opportunity/logos/teamLogoByCode";
 import { colors, radius, spacing, typography } from "@/tokens";
 
 type TeamMeta = {

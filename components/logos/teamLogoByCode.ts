@@ -1,7 +1,6 @@
 import type { ComponentType } from "react";
 
-import { CHTLogo } from "@/components/opportunity/logos/CHTLogo";
-import { OKCLogo } from "@/components/opportunity/logos/OKCLogo";
+import { CHTLogo, OKCLogo } from "@/components/logos";
 
 export const teamLogoByCode: Record<string, ComponentType> = {
   CHT: CHTLogo,

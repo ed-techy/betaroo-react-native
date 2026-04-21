@@ -25,8 +25,8 @@ export default function AtomsScreen() {
         <Text style={styles.sectionTitle}>PercentagePill</Text>
         <View style={styles.row}>
           <PercentagePill value={99} label="L5" />
-          <PercentagePill value={85} label="L10" />
-          <PercentagePill value={45} label="L20" />
+          <PercentagePill value={85} label="L5" />
+          <PercentagePill value={45} label="L5" />
           <PercentagePill value={15} label="L5" />
         </View>
       </ScrollView>

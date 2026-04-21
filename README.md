@@ -2,13 +2,21 @@
 
 React Native + TypeScript implementation of the Betaroo mobile test assignment.
 
-## Screenshots
+## Demo & screenshots
 
 <p align="center">
-  <img src="docs/atoms.png" alt="Atoms" width="32%" />
-  <img src="docs/cards.png" alt="Cards" width="32%" />
-  <img src="docs/select.png" alt="Select" width="32%" />
+  <video controls playsinline preload="metadata" width="24%" style="max-width: 24%; vertical-align: top">
+    <source
+      src="https://raw.githubusercontent.com/ed-techy/betaroo-react-native/main/docs/demo.mp4"
+      type="video/mp4"
+    />
+  </video>
+  <img src="docs/atoms.png" alt="Atoms" width="24%" style="vertical-align: top" />
+  <img src="docs/cards.png" alt="Cards" width="24%" style="vertical-align: top" />
+  <img src="docs/select.png" alt="Select" width="24%" style="vertical-align: top" />
 </p>
+
+`![Demo](docs/demo.mp4)` looks like an image in Markdown, but MP4 is not an image—use the `<video>` player above instead. If it does not render (some viewers strip HTML), open [the raw MP4](https://raw.githubusercontent.com/ed-techy/betaroo-react-native/main/docs/demo.mp4) or [the file in the repo](docs/demo.mp4). The player uses the `main` branch; ensure `docs/demo.mp4` exists there after you merge and push.
 
 ## What Was Completed
 
@@ -83,11 +91,7 @@ tokens/
 
 ## Documentation Assets
 
-Added under `docs/`:
-
-### Demo
-
-![Demo](docs/demo.mov)
+Screen recording and PNGs live under [`docs/`](docs/).
 
 ## If I Had More Time
 

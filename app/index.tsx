@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
 
 import { ConfidenceBadge } from "@/components/opportunity/ConfidenceBadge";
-import { PlayerOpportunityCard } from "@/components/opportunity/PlayerOpportunityCard";
 import { PercentagePill } from "@/components/opportunity/PercentagePill";
+import { PlayerOpportunityCard } from "@/components/opportunity/PlayerOpportunityCard";
 import { TeamOpportunityCard } from "@/components/opportunity/TeamOpportunityCard";
+import { PreferredLeaguesSelect } from "@/components/select/PreferredLeaguesSelect";
 import { darkTheme, spacing, typography } from "@/tokens";
 
 export default function HomeScreen() {
@@ -22,6 +23,8 @@ export default function HomeScreen() {
         <PercentagePill value={45} label="L20" />
         <PercentagePill value={15} label="L5" />
       </View>
+      <PreferredLeaguesSelect />
+      <View style={styles.cardGap} />
       <TeamOpportunityCard />
       <View style={styles.cardGap} />
       <PlayerOpportunityCard />

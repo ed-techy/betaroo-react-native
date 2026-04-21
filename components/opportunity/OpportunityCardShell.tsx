@@ -7,7 +7,7 @@ import {
   OddsBookIcon,
   PlusIcon,
   ShareIcon,
-} from "@/components/opportunity/icons/OpportunityIcons";
+} from "@/components/icons";
 import { PercentagePill } from "@/components/opportunity/PercentagePill";
 import { colors, radius, spacing, typography } from "@/tokens";
 

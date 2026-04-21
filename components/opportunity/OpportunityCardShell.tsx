@@ -1,0 +1,277 @@
+import type { ReactNode } from "react";
+import { Pressable, StyleSheet, Text, View } from "react-native";
+import Svg, { Path } from "react-native-svg";
+
+import { PercentagePill } from "@/components/opportunity/PercentagePill";
+import { colors, radius, spacing, typography } from "@/tokens";
+
+type OpportunityCardShellProps = {
+  league: string;
+  gameTime: string;
+  lValues: [number, number, number];
+  odds: string;
+  centerContent: ReactNode;
+};
+
+function MetaDot() {
+  return <View style={styles.metaDot} />;
+}
+
+function InfoIcon() {
+  return (
+    <Svg width={9} height={9} viewBox="0 0 9 9" fill="none">
+      <Path
+        d="M4.375 8.75C1.95875 8.75 0 6.79122 0 4.375C0 1.95875 1.95875 0 4.375 0C6.79122 0 8.75 1.95875 8.75 4.375C8.75 6.79122 6.79122 8.75 4.375 8.75ZM4.375 3.28125C4.73742 3.28125 5.03125 2.98744 5.03125 2.625C5.03125 2.26256 4.73742 1.96875 4.375 1.96875C4.01258 1.96875 3.71875 2.26256 3.71875 2.625C3.71875 2.98744 4.01258 3.28125 4.375 3.28125ZM5.25 5.6875H4.8125V3.71875H3.5V4.59375H3.9375V5.6875H3.5V6.5625H5.25V5.6875Z"
+        fill="#A4A4A4"
+      />
+    </Svg>
+  );
+}
+
+function ShareIcon() {
+  return (
+    <Svg width={8} height={9} viewBox="0 0 8 9" fill="none">
+      <Path
+        d="M6.7438 2.80622L3.93759 0L1.13135 2.80622H3.5V5.86865H4.375V2.80622H6.7438ZM0 4.99365V6.74365C0 7.46855 0.587628 8.05615 1.3125 8.05615H6.5625C7.28739 8.05615 7.875 7.46855 7.875 6.74365V4.99365H7V6.74365C7 6.98528 6.80413 7.18115 6.5625 7.18115H1.3125C1.07088 7.18115 0.875 6.98528 0.875 6.74365V4.99365H0Z"
+        fill="#A4A4A4"
+      />
+    </Svg>
+  );
+}
+
+function ChevronRightIcon() {
+  return (
+    <Svg width={5} height={7} viewBox="0 0 5 7" fill="none">
+      <Path
+        d="M2.59875 3.3411L0 0.74235L0.74235 0L4.08345 3.3411L0.74235 6.6822L0 5.93985L2.59875 3.3411Z"
+        fill="#A4A4A4"
+      />
+    </Svg>
+  );
+}
+
+function OddsBookIcon() {
+  return (
+    <Svg width={12} height={12} viewBox="0 0 12 12" fill="none">
+      <Path
+        d="M11.6955 1.11055C11.4948 1.19872 11.323 1.33805 11.1987 1.51346C11.0744 1.68886 11.0024 1.89364 10.9905 2.1056L10.9895 2.10593C10.8257 1.99449 10.6356 1.9241 10.4364 1.90114C10.2372 1.87819 10.0352 1.90339 9.84863 1.97446C9.86384 2.02301 9.88232 2.07056 9.90394 2.1168C9.97468 2.26659 10.0778 2.40018 10.2063 2.50867C10.3349 2.61716 10.486 2.69807 10.6496 2.74602C10.468 3.01698 10.2286 3.24774 9.94738 3.42302C9.82501 3.49868 9.68472 3.5433 9.53959 3.55272C9.35682 3.57357 9.17175 3.54115 9.00835 3.45966C8.84495 3.37817 8.71073 3.25136 8.62308 3.09566C8.51276 3.28558 8.33346 3.42965 8.11955 3.50025C7.90564 3.57084 7.67218 3.563 7.46391 3.47822C7.40848 3.44718 7.35386 3.41437 7.30155 3.37901C6.85475 3.08004 6.52922 2.64156 6.3802 2.13797C6.387 2.13763 6.39357 2.13698 6.40048 2.13631C6.58573 2.11648 6.76367 2.05558 6.92032 1.9584C7.07697 1.86122 7.20805 1.73042 7.30328 1.57626C7.32406 1.54306 7.34302 1.50883 7.36009 1.47372C7.20971 1.36646 7.03544 1.29436 6.85108 1.26315C6.66671 1.23194 6.47733 1.24247 6.29793 1.29391C6.26106 1.30455 6.22429 1.31708 6.18812 1.33105C6.20056 0.923539 5.88265 0.310504 5.49284 0.0874624C5.44314 0.0601437 5.3919 0.0354966 5.33936 0.0136346L5.30502 0L5.28129 0.0291552C5.25064 0.0673945 5.22247 0.107414 5.19694 0.148985C4.96706 0.525341 5.03044 1.20089 5.24545 1.55243C5.20696 1.55675 5.16836 1.56307 5.13057 1.57094C4.96762 1.60485 4.81377 1.67094 4.67874 1.76501C4.5437 1.85909 4.43044 1.9791 4.34611 2.11746C4.32566 2.15094 4.30705 2.18543 4.29034 2.22078C4.32291 2.24361 4.35667 2.26481 4.39151 2.2843C4.55204 2.37528 4.73233 2.42916 4.91819 2.44168C5.10405 2.45421 5.29039 2.42503 5.46254 2.35647C5.46911 2.35381 5.47533 2.35148 5.48143 2.34882C5.59334 2.8175 5.54721 3.30828 5.34973 3.75004C5.34904 3.74805 5.34868 3.74572 5.348 3.74372C5.34489 3.75492 5.34074 3.76623 5.33728 3.77787C5.32392 3.80625 5.31009 3.83474 5.29568 3.86289C5.26088 3.93099 5.22242 3.9973 5.18046 4.06155C5.03914 4.23248 4.83701 4.34699 4.61309 4.38298C4.38917 4.41897 4.15933 4.37389 3.96793 4.25643C3.96729 4.43353 3.91139 4.60636 3.80748 4.75254C3.70357 4.89872 3.55643 5.01152 3.38512 5.07633C3.30349 5.10727 3.21764 5.12669 3.13023 5.13397C2.75085 5.12778 2.37857 5.03403 2.04469 4.8606C2.16411 4.74281 2.25605 4.60186 2.31437 4.44718C2.37269 4.29249 2.39604 4.12761 2.38288 3.96355C2.37873 3.91222 2.3709 3.81789 2.36052 3.76922C1.94387 3.81955 1.5998 4.17695 1.42638 4.36895H1.42535C1.19524 4.17695 0.772363 3.8344 0.309262 3.86821C0.202538 3.8846 0.0985439 3.91454 0 3.95723C0.516984 4.33059 1.00934 4.73452 1.4742 5.16668C1.80076 5.46766 2.11417 5.7887 2.41353 6.11738C2.8295 6.57511 3.53999 7.49965 3.54068 7.49932C3.72584 7.66507 3.97151 7.75382 4.22431 7.74631C4.23983 7.74409 4.25407 7.73677 4.26462 7.7256C4.27516 7.71442 4.28136 7.70008 4.28216 7.685C4.28515 7.66084 4.24183 7.64631 4.21947 7.63667C4.13507 7.6075 4.05947 7.55869 3.99944 7.49458C3.9394 7.43048 3.89679 7.35308 3.87539 7.26929C3.74161 6.8661 4.99528 6.13822 6.82772 5.69069C8.66051 5.2435 10.1324 5.29782 10.2175 5.71386C10.2406 5.79727 10.242 5.88489 10.2214 5.96892C10.2009 6.05296 10.1591 6.13081 10.0997 6.19553C10.0849 6.21438 10.0539 6.24753 10.0695 6.26737C10.0777 6.28029 10.0903 6.29009 10.1051 6.2951C10.12 6.30011 10.1362 6.30003 10.151 6.29486C10.3761 6.18456 10.547 5.99346 10.6268 5.76286C10.6268 5.76286 10.8237 4.61694 10.9588 4.02308C11.0562 3.59607 11.1727 3.17481 11.3084 2.75932C11.5012 2.16821 11.7322 1.58926 12 1.02586C11.895 1.04099 11.7926 1.06947 11.6955 1.11055Z"
+        fill="#F7760D"
+      />
+      <Path
+        d="M5.22145 6.58374C6.21108 6.17689 7.25339 5.90075 8.32 5.76285C8.32 5.76285 10.4005 5.95984 10.4005 8.30933C10.4005 10.6588 8.66337 12.0001 6.2987 12.0001C3.93436 12.0001 2.6875 10.9974 2.6875 9.92927C2.6875 8.86106 3.48567 8.6909 3.85693 8.6909C4.22784 8.6909 4.89904 9.01338 4.89904 9.85046C4.89904 9.85046 4.23096 9.69259 4.23096 10.2487C4.23096 10.8047 5.02083 11.151 6.10396 11.151C7.18674 11.151 8.71603 10.6945 8.71603 8.66052C8.71603 6.4904 7.67219 6.3934 6.9465 6.3934V10.116C6.95247 10.2075 6.99561 10.2932 7.06661 10.3544C7.13762 10.4156 7.23079 10.4476 7.32605 10.4433C7.32605 10.4433 6.94442 10.7532 6.00003 10.7532C5.05563 10.7532 4.78658 10.4615 4.78658 10.4615C4.78658 10.4615 5.23354 10.4632 5.23354 10.0838C5.23354 9.70479 5.22145 6.58374 5.22145 6.58374Z"
+        fill="#61B510"
+      />
+    </Svg>
+  );
+}
+
+function PlusIcon() {
+  return (
+    <Svg width={11} height={11} viewBox="0 0 11 11" fill="none">
+      <Path
+        d="M4.725 4.725V2.625H5.775V4.725H7.875V5.775H5.775V7.875H4.725V5.775H2.625V4.725H4.725ZM5.25 10.5C2.35043 10.5 0 8.14957 0 5.25C0 2.35043 2.35043 0 5.25 0C8.14957 0 10.5 2.35043 10.5 5.25C10.5 8.14957 8.14957 10.5 5.25 10.5ZM5.25 9.45C6.36391 9.45 7.4322 9.0075 8.21985 8.21985C9.0075 7.4322 9.45 6.36391 9.45 5.25C9.45 4.13609 9.0075 3.0678 8.21985 2.28015C7.4322 1.4925 6.36391 1.05 5.25 1.05C4.13609 1.05 3.0678 1.4925 2.28015 2.28015C1.4925 3.0678 1.05 4.13609 1.05 5.25C1.05 6.36391 1.4925 7.4322 2.28015 8.21985C3.0678 9.0075 4.13609 9.45 5.25 9.45Z"
+        fill="#A4A4A4"
+      />
+    </Svg>
+  );
+}
+
+function IconButton({ children }: { children: ReactNode }) {
+  return (
+    <Pressable style={styles.headerIconButton} hitSlop={6}>
+      {children}
+    </Pressable>
+  );
+}
+
+export function OpportunityCardShell({
+  league,
+  gameTime,
+  lValues,
+  odds,
+  centerContent,
+}: OpportunityCardShellProps) {
+  return (
+    <View style={styles.card}>
+      <View style={styles.top}>
+        <View style={styles.topLeft}>
+          <Text style={styles.metaPrimary}>{league}</Text>
+          <MetaDot />
+          <Text style={styles.metaSecondary}>{gameTime}</Text>
+        </View>
+        <View style={styles.topRight}>
+          <IconButton>
+            <InfoIcon />
+          </IconButton>
+          <IconButton>
+            <ShareIcon />
+          </IconButton>
+          <IconButton>
+            <ChevronRightIcon />
+          </IconButton>
+        </View>
+      </View>
+
+      <View style={styles.center}>{centerContent}</View>
+
+      <View style={styles.bottom}>
+        <View style={styles.statsRow}>
+          <View style={styles.leftStats}>
+            <PercentagePill value={lValues[0]} label="L5" />
+            <View style={styles.statDivider} />
+            <PercentagePill value={lValues[1]} label="L10" />
+            <View style={styles.statDivider} />
+            <PercentagePill value={lValues[2]} label="L20" />
+          </View>
+
+          <View style={styles.rightRow}>
+            <View style={styles.oddsPill}>
+              <OddsBookIcon />
+              <Text style={styles.oddsText}>{odds}</Text>
+            </View>
+            <Pressable style={styles.plusButton} hitSlop={6}>
+              <PlusIcon />
+            </Pressable>
+          </View>
+        </View>
+      </View>
+    </View>
+  );
+}
+
+export const opportunityCardShellStyles = StyleSheet.create({
+  featureRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: spacing[8],
+  },
+  body: {
+    flex: 1,
+    gap: spacing[2],
+  },
+  headerRow: {
+    height: 20,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: spacing[8],
+  },
+  market: {
+    ...typography.paragraphTiny,
+    color: "#A4A4A4",
+  },
+});
+
+const styles = StyleSheet.create({
+  card: {
+    width: 358,
+    height: 126,
+    backgroundColor: colors.gray[900],
+    borderColor: "#202020",
+    borderWidth: 1,
+    borderRadius: radius.lg,
+    overflow: "hidden",
+  },
+  top: {
+    height: 26,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingTop: spacing[6],
+    paddingBottom: spacing[6],
+    paddingHorizontal: spacing[8],
+    paddingLeft: spacing[12],
+    borderBottomColor: "#202020",
+    borderBottomWidth: 1,
+  },
+  topLeft: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: spacing[6],
+  },
+  metaPrimary: {
+    ...typography.monoTiny,
+    color: "#A4A4A4",
+    letterSpacing: -0.08,
+    lineHeight: 12,
+  },
+  metaSecondary: {
+    ...typography.monoTiny,
+    color: colors.gray[600],
+    letterSpacing: -0.08,
+    lineHeight: 12,
+  },
+  metaDot: {
+    width: 2,
+    height: 2,
+    borderRadius: radius.full,
+    backgroundColor: colors.gray[700],
+  },
+  topRight: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: spacing[6],
+  },
+  headerIconButton: {
+    width: 14,
+    height: 14,
+    borderRadius: radius.sm,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  center: {
+    height: 64,
+    justifyContent: "center",
+    padding: spacing[12],
+  },
+  bottom: {
+    height: 36,
+    borderTopColor: "#202020",
+    borderTopWidth: 1,
+    paddingHorizontal: spacing[12],
+    paddingVertical: spacing[8],
+  },
+  statsRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  leftStats: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: spacing[6],
+  },
+  statDivider: {
+    width: 1,
+    height: 18,
+    backgroundColor: colors.gray[800],
+  },
+  rightRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: spacing[4],
+  },
+  oddsPill: {
+    height: 20,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: spacing[2],
+    backgroundColor: colors.gray[800],
+    borderRadius: 5,
+    justifyContent: "center",
+    paddingHorizontal: spacing[4],
+    minWidth: 51,
+  },
+  oddsText: {
+    ...typography.monoCompact,
+    color: colors.gray[0],
+    lineHeight: 16,
+  },
+  plusButton: {
+    width: 20,
+    height: 20,
+    backgroundColor: colors.gray[800],
+    borderRadius: radius.md,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});

@@ -6,20 +6,24 @@ import {
 } from "@/components/opportunity/confidence-tier";
 import { colors, radius, spacing, typography } from "@/tokens";
 
-type L5PercentagePillProps = {
+type PercentagePillProps = {
   value: number;
+  label?: string;
 };
 
-export function L5PercentagePill({ value }: L5PercentagePillProps) {
+export function PercentagePill({ value, label = "L5" }: PercentagePillProps) {
   const tier = getConfidenceTierFromValue(value);
   const palette = confidenceTierStyles[tier];
 
   return (
     <View style={styles.container}>
       <View
-        style={[styles.l5Badge, { backgroundColor: palette.backgroundColor }]}
+        style={[
+          styles.labelBadge,
+          { backgroundColor: palette.backgroundColor },
+        ]}
       >
-        <Text style={[styles.l5Label, { color: palette.color }]}>L5</Text>
+        <Text style={[styles.label, { color: palette.color }]}>{label}</Text>
       </View>
       <Text style={styles.percentage}>{Math.round(value)}%</Text>
     </View>
@@ -34,15 +38,15 @@ const styles = StyleSheet.create({
     gap: spacing[4],
     alignSelf: "flex-start",
   },
-  l5Badge: {
-    width: 23,
+  labelBadge: {
+    minWidth: 23,
     height: 18,
     justifyContent: "center",
     alignItems: "center",
     padding: spacing[4],
     borderRadius: radius.sm,
   },
-  l5Label: {
+  label: {
     ...typography.monoCompact,
     lineHeight: 12,
     letterSpacing: 0.24,

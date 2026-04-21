@@ -1,8 +1,9 @@
 import { StyleSheet, Text, View } from "react-native";
 
 import { ConfidenceBadge } from "@/components/opportunity/ConfidenceBadge";
-import { OpportunityCardStyle1 } from "@/components/opportunity/OpportunityCardStyle1";
+import { PlayerOpportunityCard } from "@/components/opportunity/PlayerOpportunityCard";
 import { PercentagePill } from "@/components/opportunity/PercentagePill";
+import { TeamOpportunityCard } from "@/components/opportunity/TeamOpportunityCard";
 import { darkTheme, spacing, typography } from "@/tokens";
 
 export default function HomeScreen() {
@@ -17,11 +18,13 @@ export default function HomeScreen() {
       </View>
       <View style={styles.badgesRow}>
         <PercentagePill value={99} label="L5" />
-        <PercentagePill value={85} label="L5" />
-        <PercentagePill value={45} label="L5" />
+        <PercentagePill value={85} label="L10" />
+        <PercentagePill value={45} label="L20" />
         <PercentagePill value={15} label="L5" />
       </View>
-      <OpportunityCardStyle1 />
+      <TeamOpportunityCard />
+      <View style={styles.cardGap} />
+      <PlayerOpportunityCard />
     </View>
   );
 }
@@ -44,5 +47,8 @@ const styles = StyleSheet.create({
     gap: spacing[8],
     flexWrap: "wrap",
     marginBottom: spacing[8],
+  },
+  cardGap: {
+    height: spacing[8],
   },
 });

@@ -1,50 +1,51 @@
-# Welcome to your Expo app 👋
+# Betaroo RN Test Task
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+React Native + TypeScript project for the Betaroo mobile test assignment.
 
-## Get started
+## Current Status
 
-1. Install dependencies
+- Project baseline cleanup
+- Single app shell route in `app/index.tsx`
+- Token refactor
 
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+## Run
 
 ```bash
-npm run reset-project
+npm install
+npm run ios
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Alternative:
 
-## Learn more
+```bash
+npm start
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+## Token Architecture
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+The token system is organized for scalability and type safety:
 
-## Join the community
+```txt
+tokens/
+  index.ts
+  primitives/
+    colors.ts
+    spacing.ts
+    radius.ts
+    shadows.ts
+    typography.ts
+  semantic/
+    dark.ts
+    light.ts
+    index.ts
+```
 
-Join our community of developers creating universal apps.
+- `primitives`: raw, reusable values (palette, spacing scale, radii, shadows, typography)
+- `semantic`: usage-oriented theme tokens (`background`, `text`, `border`, `state`, etc.)
+- `index.ts`: clean public API for token imports
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Notes
+
+- No external UI library is used for core UI.
+- Styling is intended via `StyleSheet.create`.
+- Current branch focus: baseline + token foundation before component implementation.

@@ -2,6 +2,14 @@
 
 React Native + TypeScript implementation of the Betaroo mobile test assignment.
 
+## Screenshots
+
+<p align="center">
+  <img src="docs/atoms.png" alt="Atoms" width="32%" />
+  <img src="docs/cards.png" alt="Cards" width="32%" />
+  <img src="docs/select.png" alt="Select" width="32%" />
+</p>
+
 ## What Was Completed
 
 1. **Opportunity Cards**
@@ -80,12 +88,6 @@ Added under `docs/`:
 ### Demo
 
 ![Demo](docs/demo.mov)
-
-### Screenshots
-
-![Atoms](docs/atoms.png)
-![Cards](docs/cards.png)
-![Select](docs/select.png)
 
 ## If I Had More Time
 

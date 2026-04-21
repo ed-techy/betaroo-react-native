@@ -1,7 +1,8 @@
 import { StyleSheet, Text, View } from "react-native";
 
 import { ConfidenceBadge } from "@/components/opportunity/ConfidenceBadge";
-import { lightTheme, spacing, typography } from "@/tokens";
+import { L5PercentagePill } from "@/components/opportunity/L5PercentagePill";
+import { darkTheme, spacing, typography } from "@/tokens";
 
 export default function HomeScreen() {
   return (
@@ -13,6 +14,12 @@ export default function HomeScreen() {
         <ConfidenceBadge value="FAIR" />
         <ConfidenceBadge value="RISKY" />
       </View>
+      <View style={styles.badgesRow}>
+        <L5PercentagePill value={99} />
+        <L5PercentagePill value={85} />
+        <L5PercentagePill value={45} />
+        <L5PercentagePill value={15} />
+      </View>
     </View>
   );
 }
@@ -22,11 +29,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     paddingHorizontal: spacing[24],
-    backgroundColor: lightTheme.background.base,
+    backgroundColor: darkTheme.background.base,
   },
   title: {
     ...typography.headingMedium,
-    color: lightTheme.text.primary,
+    color: darkTheme.text.primary,
     marginBottom: spacing[8],
   },
   badgesRow: {
@@ -34,5 +41,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: spacing[8],
     flexWrap: "wrap",
+    marginBottom: spacing[8],
   },
 });
